@@ -2,5 +2,8 @@ sudo: required
 language: generic
 before_install:
   - sudo apt-get install -y --no-install-recommends miredo
+  - sudo modprobe ipv6
+  - sudo service miredo start
+  - sudo ip addr show
 script:
-  - sudo service miredo start && sudo ip addr show && curl http://ipv6.root.cz
+  - curl http://ipv6.root.cz
