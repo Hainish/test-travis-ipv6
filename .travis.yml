@@ -1,9 +1,13 @@
 sudo: required
 language: generic
+services:
+  - docker
 before_install:
-  - sudo apt-get install -y --no-install-recommends miredo
-  - sudo modprobe ipv6
-  - sudo dhclient -6 teredo
-  - sudo ifconfig
+  - > docker build -t test - << __EOF__
+    FROM debian
+    RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends miredo
+    RUN sudo modprobe ipv6
+    RUN dhclient -6 teredo
+    RUN sudo ifconfig
 script:
-  - curl http://ipv6.root.cz
+  - docker run -it test "sudo modprobe ipv6 && sudo dhclient -6 teredo && sudo ifconfig && curl http://ipv6.root.cz"
