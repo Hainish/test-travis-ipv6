@@ -5,5 +5,8 @@ before_install:
   - sudo modprobe ipv6
   - sudo service miredo start
   - sudo ip addr show
+  - cd /etc/modprobe.d
+  - grep ipv6 *
+  - cat blacklist.local
 script:
   - curl http://ipv6.root.cz
