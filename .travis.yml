@@ -3,6 +3,7 @@ language: generic
 before_install:
   - sudo apt-get install -y --no-install-recommends miredo
   - sudo modprobe ipv6
+  - sudo dhclient -6 teredo
   - sudo ifconfig
 script:
   - curl http://ipv6.root.cz
