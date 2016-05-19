@@ -5,4 +5,4 @@ services:
 before_install:
   - docker build -t test .
 script:
-  - docker run --privileged -it test "service miredo start && ip addr show && curl http://ipv6.root.cz"
+  - docker run --privileged -it test bash -c "service miredo start && ip addr show && curl http://ipv6.root.cz"
