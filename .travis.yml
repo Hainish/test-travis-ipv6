@@ -1,0 +1,6 @@
+sudo: required
+language: generic
+before_install:
+  - apt-get install -y --no-install-recommends miredo
+script:
+  - curl http://ipv6.root.cz
