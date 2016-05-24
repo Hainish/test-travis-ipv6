@@ -3,4 +3,5 @@ language: generic
 services:
   - docker
 script:
+  - ls
   - docker images
